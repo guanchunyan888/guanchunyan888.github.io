@@ -5,31 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>导航页</title>
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4a90e2;
-            --text-color: #2c3e50;
-            --bg-color: #f5f7fa;
-            --card-bg: #f8f9fa;
-            --border-color: #e9ecef;
-            --shadow-color: rgba(0,0,0,0.1);
+            --primary-color: #5b7aea;
+            --primary-light: #6e8bf5;
+            --text-color: #475569;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-color: rgba(0,0,0,0.05);
+            --hover-shadow: rgba(91, 122, 234, 0.1);
             --container-bg: white;
-            --description-color: #6c757d;
-            --category-bg: rgba(74, 144, 226, 0.1);
-            --category-color: #4a90e2;
+            --description-color: #64748b;
+            --category-bg: rgba(91, 122, 234, 0.06);
+            --category-color: #5b7aea;
+            --header-gradient: linear-gradient(135deg, #5b7aea, #6e8bf5);
+            --link-card-border: #f1f5f9;
         }
 
         [data-theme="dark"] {
-            --primary-color: #64b5f6;
-            --text-color: #e9ecef;
-            --bg-color: #1a1a1a;
-            --card-bg: #2d2d2d;
-            --border-color: #404040;
-            --shadow-color: rgba(0,0,0,0.3);
-            --container-bg: #2d2d2d;
-            --description-color: #a0a0a0;
-            --category-bg: rgba(100, 181, 246, 0.1);
-            --category-color: #64b5f6;
+            --primary-color: #6e8bf5;
+            --primary-light: #8ca5fc;
+            --text-color: #cbd5e1;
+            --bg-color: #1e293b;
+            --card-bg: #293548;
+            --border-color: #3a4a63;
+            --shadow-color: rgba(0,0,0,0.15);
+            --hover-shadow: rgba(110, 139, 245, 0.1);
+            --container-bg: #293548;
+            --description-color: #94a3b8;
+            --category-bg: rgba(110, 139, 245, 0.08);
+            --category-color: #6e8bf5;
+            --header-gradient: linear-gradient(135deg, #6e8bf5, #5b7aea);
+            --link-card-border: #3a4a63;
         }
 
         * {
@@ -39,29 +50,31 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, var(--bg-color) 0%, #c3cfe2 100%);
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            transition: background 0.3s ease;
+            transition: background 0.5s ease;
+            color: var(--text-color);
         }
 
         .container {
             background: var(--container-bg);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 24px;
+            padding: 32px;
             box-shadow: 0 10px 30px var(--shadow-color);
             width: 100%;
             max-width: 1200px;
-            transition: all 0.3s ease;
-            animation: fadeIn 0.5s ease;
+            transition: all 0.5s ease;
+            animation: fadeIn 0.7s ease;
+            overflow: hidden;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -69,165 +82,286 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 36px;
+            background: var(--header-gradient);
+            margin: -32px -32px 32px -32px;
+            padding: 32px;
+            border-radius: 24px 24px 0 0;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
         }
 
         h1 {
-            color: var(--text-color);
+            color: white;
             font-size: 32px;
             font-weight: 700;
-            text-shadow: 2px 2px 4px var(--shadow-color);
             margin: 0;
+            letter-spacing: -0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: rgba(255,255,255,0.5);
+            animation: slideRight 3s ease-in-out infinite;
+        }
+
+        @keyframes slideRight {
+            0% { transform: translateX(0); width: 20px; }
+            50% { transform: translateX(100px); width: 60px; }
+            100% { transform: translateX(0); width: 20px; }
         }
 
         .theme-toggle {
-            background: none;
+            background: rgba(255,255,255,0.15);
             border: none;
-            color: var(--text-color);
-            font-size: 24px;
+            color: white;
+            font-size: 20px;
             cursor: pointer;
-            padding: 8px;
+            padding: 12px;
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.2); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0); }
         }
 
         .theme-toggle:hover {
-            background: var(--card-bg);
+            background: rgba(255,255,255,0.25);
             transform: rotate(180deg);
+            animation: none;
         }
 
         .search-container {
-            margin-bottom: 30px;
+            margin-bottom: 36px;
             position: relative;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            animation: slideDown 0.5s ease;
+            animation: slideDown 0.7s ease;
+            z-index: 10;
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .search-input {
             width: 100%;
-            padding: 15px 20px;
-            padding-left: 45px;
+            padding: 16px 20px;
+            padding-left: 50px;
             border: 2px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 16px;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             background: var(--card-bg);
             color: var(--text-color);
+            box-shadow: 0 4px 6px var(--shadow-color);
         }
 
         .search-input:focus {
             outline: none;
             border-color: var(--primary-color);
             background: var(--container-bg);
-            box-shadow: 0 0 15px rgba(74, 144, 226, 0.1);
+            box-shadow: 0 0 0 4px rgba(91, 122, 234, 0.1);
+            transform: translateY(-2px);
         }
 
         .search-icon {
             position: absolute;
-            left: 15px;
+            left: 18px;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--description-color);
+            color: var(--primary-color);
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus + .search-icon {
+            transform: translateY(-50%) scale(1.2);
         }
 
         .links {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
             margin-top: 20px;
+            position: relative;
+            z-index: 5;
         }
 
         .link-card {
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
+            padding: 24px;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             color: var(--text-color);
             display: block;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--link-card-border);
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 0.5s ease;
+            animation: fadeInUp 0.7s ease;
             animation-fill-mode: both;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            transform-origin: center bottom;
         }
 
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .link-card:nth-child(1) { animation-delay: 0.1s; }
-        .link-card:nth-child(2) { animation-delay: 0.2s; }
-        .link-card:nth-child(3) { animation-delay: 0.3s; }
+        .link-card:nth-child(1) { animation-delay: 0.2s; }
+        .link-card:nth-child(2) { animation-delay: 0.35s; }
+        .link-card:nth-child(3) { animation-delay: 0.5s; }
 
         .link-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 6px;
             height: 100%;
-            background: var(--primary-color);
+            background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.4s ease;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .link-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            transition: width 0.5s ease;
         }
 
         .link-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 20px var(--shadow-color);
-            background: var(--container-bg);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px var(--hover-shadow);
+            border-color: var(--primary-color);
         }
 
         .link-card:hover::before {
             opacity: 1;
         }
 
+        .link-card:hover::after {
+            width: 100%;
+        }
+
         .link-card h2 {
-            font-size: 20px;
-            margin-bottom: 8px;
+            font-size: 22px;
+            margin-bottom: 10px;
             color: var(--text-color);
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .link-card h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            margin-right: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .link-card:hover h2 {
+            transform: translateX(5px);
+            color: var(--primary-color);
+        }
+
+        .link-card:hover h2::before {
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--primary-color);
         }
 
         .link-card p {
             color: var(--description-color);
-            font-size: 14px;
+            font-size: 15px;
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .link-card:hover p {
+            transform: translateX(5px);
         }
 
         .category-label {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 12px;
+            right: 12px;
             background: var(--category-bg);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
             color: var(--category-color);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .link-card:hover .category-label {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px var(--hover-shadow);
         }
 
         .tooltip {
             position: absolute;
             background: var(--container-bg);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
             color: var(--text-color);
-            box-shadow: 0 2px 8px var(--shadow-color);
+            box-shadow: 0 4px 12px var(--shadow-color);
             opacity: 0;
             transform: translateY(10px);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             pointer-events: none;
             z-index: 1000;
+            bottom: 10px;
+            left: 24px;
+            border-left: 3px solid var(--primary-color);
         }
 
         .link-card:hover .tooltip {
@@ -237,17 +371,39 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 24px;
+                border-radius: 16px;
+            }
+            
+            .header {
+                margin: -24px -24px 24px -24px;
+                padding: 24px;
             }
             
             h1 {
                 font-size: 24px;
-                margin-bottom: 20px;
             }
 
             .search-input {
-                padding: 12px 15px;
-                padding-left: 40px;
+                padding: 14px 16px;
+                padding-left: 45px;
+                font-size: 15px;
+            }
+            
+            .links {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 16px;
+            }
+            
+            .link-card {
+                padding: 20px;
+            }
+            
+            .link-card h2 {
+                font-size: 18px;
+            }
+            
+            .link-card p {
                 font-size: 14px;
             }
         }
@@ -259,28 +415,69 @@
         .no-results {
             text-align: center;
             color: var(--description-color);
-            padding: 20px;
-            animation: fadeIn 0.3s ease;
+            padding: 30px;
+            animation: fadeIn 0.5s ease;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 2px 10px var(--shadow-color);
         }
 
         .footer {
-            margin-top: 40px;
+            margin-top: 48px;
             text-align: center;
             color: var(--description-color);
             font-size: 14px;
             padding-top: 20px;
             border-top: 1px solid var(--border-color);
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.7s ease;
+            animation-delay: 0.6s;
+            animation-fill-mode: both;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: var(--primary-color);
+            animation: pulse-width 3s infinite;
+        }
+
+        @keyframes pulse-width {
+            0% { width: 50px; opacity: 0.6; }
+            50% { width: 120px; opacity: 1; }
+            100% { width: 50px; opacity: 0.6; }
         }
 
         .footer a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
         }
 
         .footer a:hover {
-            color: var(--text-color);
+            color: var(--primary-light);
+        }
+
+        .footer a:hover::after {
+            width: 100%;
         }
 
         .footer .separator {
@@ -298,15 +495,15 @@
             </button>
         </div>
         <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
             <input type="text" class="search-input" placeholder="搜索网站..." id="searchInput">
+            <i class="fas fa-search search-icon"></i>
         </div>
         <div class="links" id="linksContainer">
             <a href="http://pay.ikdxhz.top" class="link-card" data-keywords="驾考 考试 题库 驾驶" target="_blank" rel="noopener noreferrer">
-                <div class="category-label">学习</div>
-                <h2>赞助我们</h2>
-                <p>赞助我们，支持我们！</p>
-                <div class="tooltip">点击访问赞助</div>
+                <div class="category-label">赞助</div>
+                <h2>赞助（不可用）</h2>
+                <p>赞助我们，让我们更加努力</p>
+                <div class="tooltip">点击访问赞助网站</div>
             </a>
             <a href="http://blog.ikdxhz.top/uuid" class="link-card" data-keywords="uuid 生成器 随机 工具 开发" target="_blank" rel="noopener noreferrer">
                 <div class="category-label">工具</div>
@@ -357,7 +554,7 @@
                 if (!noResults) {
                     noResults = document.createElement('div');
                     noResults.className = 'no-results';
-                    noResults.innerHTML = '<i class="fas fa-search" style="font-size: 24px; margin-bottom: 10px;"></i><br>未找到相关网站，请尝试其他关键词';
+                    noResults.innerHTML = '<i class="fas fa-search" style="font-size: 32px; margin-bottom: 16px; color: var(--primary-color);"></i><br>未找到相关网站，请尝试其他关键词';
                     container.appendChild(noResults);
                 }
             } else if (noResults) {
@@ -387,6 +584,16 @@
             icon.classList.toggle('fa-moon');
             icon.classList.toggle('fa-sun');
         });
+        
+        // 检测系统主题偏好并自动应用
+        if (!savedTheme) {
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDarkMode) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
     </script>
 </body>
 </html> 
