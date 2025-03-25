@@ -485,53 +485,226 @@
             color: var(--border-color);
         }
 
-        /* 公告条样式 */
-        .announcement-bar {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(90deg, rgba(91, 122, 234, 0.08), rgba(91, 122, 234, 0.15));
-            border-radius: 12px;
-            padding: 12px 20px;
-            margin-bottom: 24px;
-            overflow: hidden;
+        /* 公告弹窗样式 */
+        .announcement-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .announcement-content {
+            background-color: var(--card-bg);
+            margin: 10% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px var(--shadow-color);
             position: relative;
-            box-shadow: 0 2px 8px var(--shadow-color);
-            animation: fadeIn 0.7s ease;
+            animation: slideDown 0.4s ease-out;
+            border-left: 5px solid var(--primary-color);
         }
         
-        .announcement-icon {
-            flex-shrink: 0;
+        .announcement-content h2 {
             color: var(--primary-color);
-            font-size: 18px;
-            margin-right: 16px;
-            animation: pulse-opacity 2s infinite;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 24px;
         }
         
-        @keyframes pulse-opacity {
+        .announcement-body {
+            margin-bottom: 24px;
+            color: var(--text-color);
+            font-size: 16px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            font-family: 'Noto Sans SC', monospace;
+            overflow-y: auto;
+            max-height: 50vh;
+            text-align: left;
+            background-color: rgba(91, 122, 234, 0.03);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .announcement-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .announcement-body::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 8px;
+        }
+        
+        .announcement-body::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 8px;
+            opacity: 0.7;
+        }
+        
+        .announcement-body::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+        
+        .announcement-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        #closeAnnouncementBtn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-left: auto;
+        }
+        
+        #closeAnnouncementBtn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px var(--hover-shadow);
+        }
+        
+        .close-announcement {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--description-color);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-announcement:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* 头部按钮组样式 */
+        .header-buttons {
+            display: flex;
+            gap: 12px;
+        }
+        
+        /* 公告按钮样式 */
+        .announcement-button {
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        .announcement-button:hover {
+            background: rgba(255,255,255,0.25);
+            transform: scale(1.1);
+        }
+        
+        .announcement-button i {
+            animation: pulse-fade 2s infinite;
+        }
+        
+        @keyframes pulse-fade {
             0% { opacity: 0.7; }
             50% { opacity: 1; }
             100% { opacity: 0.7; }
         }
         
-        .announcement-content {
-            overflow: hidden;
-            width: 100%;
+        /* 调整移动端样式 */
+        @media (max-width: 768px) {
+            .header-buttons {
+                gap: 8px;
+            }
+            
+            .announcement-button, 
+            .theme-toggle {
+                padding: 10px;
+                font-size: 16px;
+            }
         }
-        
-        .announcement-text {
+
+        /* 修改公告内容样式 */
+        .announcement-body {
+            margin-bottom: 24px;
             color: var(--text-color);
-            font-size: 15px;
-            white-space: nowrap;
-            animation: scroll-text 20s linear infinite;
+            font-size: 16px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            font-family: 'Noto Sans SC', monospace;
+            overflow-y: auto;
+            max-height: 50vh;
+            text-align: left;
+            background-color: rgba(91, 122, 234, 0.03);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
         }
         
-        @keyframes scroll-text {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        /* 添加滚动条样式 */
+        .announcement-body::-webkit-scrollbar {
+            width: 8px;
         }
         
-        [data-theme="dark"] .announcement-bar {
-            background: linear-gradient(90deg, rgba(110, 139, 245, 0.08), rgba(110, 139, 245, 0.15));
+        .announcement-body::-webkit-scrollbar-track {
+            background: var(--card-bg);
+            border-radius: 8px;
+        }
+        
+        .announcement-body::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 8px;
+            opacity: 0.7;
+        }
+        
+        .announcement-body::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .announcement-content {
+                margin: 5% auto;
+                padding: 20px;
+                width: 95%;
+            }
+            
+            .announcement-body {
+                max-height: 60vh;
+                font-size: 15px;
+                padding: 12px;
+            }
         }
     </style>
 </head>
@@ -539,16 +712,49 @@
     <div class="container">
         <div class="header">
             <h1>网站导航</h1>
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
-        <div class="announcement-bar">
-            <div class="announcement-icon"><i class="fas fa-bullhorn"></i></div>
-            <div class="announcement-content">
-                <div class="announcement-text">欢迎使用ikdxhz网站导航！新增AI井字棋游戏和Python在线运行工具，更多精彩功能持续更新中...作者邮箱：ikdxhz@ikdxhz.top,欢迎反馈bug和提供建议&ikdxhz网站优点：1.公益免费2.子功能齐全3.每个月都会增加一些网站4.欢迎更多...&还在等什么？赶紧Ctrl+D收藏该导航页！！！&记住我们的域名wz.ikdxhz.top</div>
+            <div class="header-buttons">
+                <button class="announcement-button" id="showAnnouncementBtn" title="查看公告">
+                    <i class="fas fa-bullhorn"></i>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
+        
+        <!-- 添加公告弹窗 -->
+        <div id="announcementModal" class="announcement-modal">
+            <div class="announcement-content">
+                <span class="close-announcement">&times;</span>
+                <h2>网站公告</h2>
+                <div class="announcement-body">
+📢 欢迎使用 ikdxhz 网站导航！
+
+🆕 近期更新：
+   • AI井字棋游戏 - 挑战AI，锻炼策略思维
+   • Python在线运行工具 - 随时随地执行Python代码
+   • 更多精彩功能持续更新中...
+
+💪 我们的优势：
+   ✓ 完全公益免费
+   ✓ 子功能齐全实用
+   ✓ 每月定期更新
+   ✓ 简洁美观的界面
+
+💌 反馈与建议：
+   邮箱：ikdxhz@ikdxhz.top
+   欢迎反馈问题和提供宝贵建议！
+
+🔖 还在等什么？赶紧 Ctrl+D 收藏本站！
+   官方域名：wz.ikdxhz.top
+                </div>
+                <div class="announcement-footer">
+                    <div></div>
+                    <button id="closeAnnouncementBtn">关闭</button>
+                </div>
+            </div>
+        </div>
+        
         <div class="search-container">
             <input type="text" class="search-input" placeholder="搜索网站..." id="searchInput">
             <i class="fas fa-search search-icon"></i>
@@ -661,6 +867,64 @@
                 icon.classList.add('fa-sun');
             }
         }
+
+        // 公告弹窗功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('announcementModal');
+            const closeBtn = document.querySelector('.close-announcement');
+            const closeButtonBtn = document.getElementById('closeAnnouncementBtn');
+            const showAnnouncementBtn = document.getElementById('showAnnouncementBtn');
+            
+            // 检查是否需要显示公告（每天仅显示一次）
+            function shouldShowAnnouncement() {
+                const lastShown = localStorage.getItem('lastAnnouncementShown');
+                const today = new Date().toDateString();
+                
+                if (!lastShown || lastShown !== today) {
+                    return true;
+                }
+                return false;
+            }
+            
+            // 显示公告
+            function showAnnouncement() {
+                modal.style.display = 'block';
+            }
+            
+            // 关闭公告并记录状态
+            function closeAnnouncement() {
+                modal.style.display = 'none';
+                
+                // 记录当前日期，确保今天不再自动显示
+                const today = new Date().toDateString();
+                localStorage.setItem('lastAnnouncementShown', today);
+            }
+            
+            // 绑定关闭事件
+            closeBtn.addEventListener('click', closeAnnouncement);
+            closeButtonBtn.addEventListener('click', closeAnnouncement);
+            
+            // 绑定显示公告按钮事件
+            showAnnouncementBtn.addEventListener('click', function() {
+                // 手动显示公告不记录状态，可以多次查看
+                modal.style.display = 'block';
+            });
+            
+            // 点击弹窗外部也可关闭
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeAnnouncement();
+                }
+            });
+            
+            // 检查并显示公告
+            if (shouldShowAnnouncement()) {
+                // 稍微延迟显示弹窗，让页面先加载完
+                setTimeout(function() {
+                    modal.style.display = 'block';
+                }, 800);
+            }
+        });
     </script>
 </body>
 </html> 
