@@ -414,6 +414,25 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .links {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .link-card {
+                padding: 20px;
+            }
+            
+            .link-card h2 {
+                font-size: 18px;
+            }
+            
+            .link-card p {
+                font-size: 14px;
+            }
+        }
+
         .hidden {
             display: none;
         }
@@ -441,22 +460,12 @@
             position: relative;
         }
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: var(--primary-color);
-            animation: pulse-width 3s infinite;
-        }
-
-        @keyframes pulse-width {
-            0% { width: 50px; opacity: 0.6; }
-            50% { width: 120px; opacity: 1; }
-            100% { width: 50px; opacity: 0.6; }
+        .footer-links {
+            display: inline-flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .footer a {
@@ -465,6 +474,9 @@
             transition: all 0.3s ease;
             font-weight: 500;
             position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .footer a::after {
@@ -486,9 +498,10 @@
             width: 100%;
         }
 
-        .footer .separator {
-            margin: 0 10px;
-            color: var(--border-color);
+        .footer span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         /* 公告弹窗样式 */
@@ -734,8 +747,8 @@
                 <span class="close-announcement">&times;</span>
                 <h2>网站公告</h2>
                 <div class="announcement-body">
-AI猜人物维护结束
-修复了已知问题
+增加了系统监控
+AI猜人物游戏增加了人机验证，优化上下文
                 </div>
                 <div class="announcement-footer">
                     <div></div>
@@ -786,12 +799,21 @@ AI猜人物维护结束
                 <div class="tooltip">点击开始AI井字棋对战</div>
             </a>
         </div>
+        
         <div class="footer">
-            <a href="http://wz.ikdxhz.top" target="_blank" rel="noopener noreferrer">访问地址</a>
-            <span class="separator">|</span>
-            <span>作者：ikdxhz</span>
+            <div class="footer-links">
+                <a href="http://wz.ikdxhz.top" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-globe"></i> 访问地址
+                </a>
+                <a href="http://jc.ikdxhz.top" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-chart-line"></i> 系统监控
+                </a>
+                <span><i class="fas fa-user"></i> 作者：ikdxhz</span>
+            </div>
         </div>
     </div>
+            
+        
 
     <script>
         // 搜索功能
