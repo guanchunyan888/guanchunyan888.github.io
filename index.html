@@ -217,6 +217,29 @@
             margin-top: 20px;
             position: relative;
             z-index: 5;
+            max-height: calc(2 * (24px + 150px)); /* 两行卡片的高度 (卡片高度+间距) */
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        /* 链接列表滚动条样式 */
+        .links::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .links::-webkit-scrollbar-track {
+            background: var(--bg-color);
+            border-radius: 8px;
+        }
+        
+        .links::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 8px;
+            opacity: 0.7;
+        }
+        
+        .links::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
         }
 
         .link-card {
@@ -234,6 +257,7 @@
             animation-fill-mode: both;
             box-shadow: 0 4px 10px var(--shadow-color);
             transform-origin: center bottom;
+            height: 150px; /* 固定卡片高度 */
         }
 
         @keyframes fadeInUp {
@@ -724,6 +748,27 @@
                 font-size: 15px;
                 padding: 12px;
             }
+            
+            .links {
+                max-height: calc(2 * (16px + 130px)); /* 调整移动端两行卡片高度 */
+                padding-right: 5px;
+            }
+            
+            .link-card {
+                height: 130px; /* 移动端卡片高度调整 */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .links {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                max-height: calc(2 * (16px + 120px)); /* 小屏幕两行卡片高度 */
+            }
+            
+            .link-card {
+                height: 120px; /* 小屏幕卡片高度调整 */
+            }
         }
     </style>
 </head>
@@ -747,8 +792,7 @@
                 <span class="close-announcement">&times;</span>
                 <h2>网站公告</h2>
                 <div class="announcement-body">
-增加了系统监控
-AI猜人物游戏增加了人机验证，优化上下文
+上线Steam风格人机验证挑战游戏，欢迎体验
                 </div>
                 <div class="announcement-footer">
                     <div></div>
@@ -768,7 +812,7 @@ AI猜人物游戏增加了人机验证，优化上下文
                 <p>赞助我们，支持网站长期发展，功能现已恢复</p>
                 <div class="tooltip">点击访问赞助页面</div>
             </a>
-            <a href="https://crw.ikdxhz.top" class="link-card" data-keywords="赞助 支持 捐赠 付款" target="_blank" rel="noopener noreferrer">
+            <a href="https://crw.ikdxhz.top" class="link-card" data-keywords="AI 猜人物 游戏 互动 对话" target="_blank" rel="noopener noreferrer">
                 <div class="category-label">AI|游戏</div>
                 <h2>AI猜人物游戏</h2>
                 <p>AI来猜人物互动游戏，猜猜他是谁</p>
@@ -797,6 +841,12 @@ AI猜人物游戏增加了人机验证，优化上下文
                 <h2>AI井字棋对战</h2>
                 <p>与人工智能进行井字棋对战，支持多种游戏模式和详细规则</p>
                 <div class="tooltip">点击开始AI井字棋对战</div>
+            </a>
+            <a href="https://rjyz.ikdxhz.top/" class="link-card" data-keywords="人机验证 游戏 Steam 挑战 验证码" target="_blank" rel="noopener noreferrer">
+                <div class="category-label">游戏|娱乐</div>
+                <h2>人机验证挑战</h2>
+                <p>Steam风格的人机验证游戏，挑战你的观察力和反应能力</p>
+                <div class="tooltip">点击体验人机验证游戏</div>
             </a>
         </div>
         
