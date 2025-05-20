@@ -74,14 +74,13 @@
             box-shadow: 0 10px 30px var(--shadow-color);
             width: 100%;
             max-width: 1200px;
-            transition: all 0.5s ease;
-            animation: fadeIn 0.7s ease;
+            transition: all 0.3s ease;
             overflow: hidden;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .header {
@@ -94,7 +93,7 @@
             padding: 32px;
             border-radius: 24px 24px 0 0;
             position: relative;
-            transition: all 0.5s ease;
+            transition: all 0.3s ease;
         }
 
         .header::after {
@@ -125,13 +124,6 @@
             width: 40px;
             height: 3px;
             background: rgba(255,255,255,0.5);
-            animation: slideRight 3s ease-in-out infinite;
-        }
-
-        @keyframes slideRight {
-            0% { transform: translateX(0); width: 20px; }
-            50% { transform: translateX(100px); width: 60px; }
-            100% { transform: translateX(0); width: 20px; }
         }
 
         .theme-toggle {
@@ -142,22 +134,14 @@
             cursor: pointer;
             padding: 12px;
             border-radius: 50%;
-            transition: all 0.5s ease;
+            transition: all 0.3s ease;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.2); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255,255,255,0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0); }
         }
 
         .theme-toggle:hover {
             background: rgba(255,255,255,0.25);
             transform: rotate(180deg);
-            animation: none;
         }
 
         .search-container {
@@ -166,13 +150,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            animation: slideDown 0.7s ease;
             z-index: 10;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .search-input {
@@ -182,7 +160,7 @@
             border: 2px solid var(--border-color);
             border-radius: 16px;
             font-size: 16px;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             background: var(--card-bg);
             color: var(--text-color);
             box-shadow: 0 4px 6px var(--shadow-color);
@@ -193,7 +171,6 @@
             border-color: var(--primary-color);
             background: var(--container-bg);
             box-shadow: 0 0 0 4px rgba(91, 122, 234, 0.1);
-            transform: translateY(-2px);
         }
 
         .search-icon {
@@ -207,7 +184,7 @@
         }
 
         .search-input:focus + .search-icon {
-            transform: translateY(-50%) scale(1.2);
+            transform: translateY(-50%) scale(1.1);
         }
 
         .links {
@@ -246,55 +223,20 @@
             background: var(--card-bg);
             padding: 24px;
             border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             text-decoration: none;
             color: var(--text-color);
             display: block;
             border: 1px solid var(--link-card-border);
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 0.7s ease;
-            animation-fill-mode: both;
             box-shadow: 0 4px 10px var(--shadow-color);
             transform-origin: center bottom;
-            height: 150px; /* 固定卡片高度 */
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .link-card:nth-child(1) { animation-delay: 0.2s; }
-        .link-card:nth-child(2) { animation-delay: 0.35s; }
-        .link-card:nth-child(3) { animation-delay: 0.5s; }
-
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
-            opacity: 0;
-            transition: all 0.4s ease;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .link-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
-            transition: width 0.5s ease;
+            height: 150px;
         }
 
         .link-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-5px);
             box-shadow: 0 15px 30px var(--hover-shadow);
             border-color: var(--primary-color);
         }
@@ -318,25 +260,13 @@
             transition: all 0.3s ease;
         }
 
-        .link-card h2::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            margin-right: 12px;
-            transition: all 0.4s ease;
-        }
-
         .link-card:hover h2 {
-            transform: translateX(5px);
+            transform: translateX(3px);
             color: var(--primary-color);
         }
 
         .link-card:hover h2::before {
-            transform: scale(1.5);
-            box-shadow: 0 0 10px var(--primary-color);
+            transform: scale(1.2);
         }
 
         .link-card p {
@@ -350,7 +280,7 @@
         }
 
         .link-card:hover p {
-            transform: translateX(5px);
+            transform: translateX(3px);
         }
 
         .category-label {
@@ -372,8 +302,7 @@
         .link-card:hover .category-label {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 10px var(--hover-shadow);
+            transform: translateY(-2px);
         }
 
         .tooltip {
@@ -385,8 +314,8 @@
             color: var(--text-color);
             box-shadow: 0 4px 12px var(--shadow-color);
             opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.4s ease;
+            transform: translateY(5px);
+            transition: all 0.3s ease;
             pointer-events: none;
             z-index: 1000;
             bottom: 10px;
@@ -792,14 +721,46 @@
                 <span class="close-announcement">&times;</span>
                 <h2>网站公告</h2>
                 <div class="announcement-body">
-【GitHub用户信息查询中心上线】
-现在您可以方便地查询GitHub用户的注册时间、活动统计等信息！
-支持手动输入API数据，轻松绕过GitHub API的速率限制。
-开发者必备工具，欢迎使用！🔍
-网址: https://gitme.ikdxhz.top/
+所有网站公告都在这里发布，请收藏本页面，及时查看最新公告。        
+【本页面】
+无公告
 
-长期接各种广告，欢迎联系ikdxhz@ikdxhz.top
-长期接各种广告，欢迎联系ikdxhz@ikdxhz.top
+【GitHub用户信息查询】
+无公告
+
+【AI猜人物游戏】
+无公告
+
+【博客】
+无公告
+
+【久亦-免费云主机】
+无公告
+
+【赞助】
+无公告
+
+【多功能媒体工具】
+无公告
+
+【随机数生成器】
+无公告
+
+【Python在线运行器】
+无公告
+
+【AI井字棋对战】
+无公告
+
+【人机验证挑战】
+无公告
+
+【随机字符生成】
+无公告
+
+【表白墙】
+无公告
+
 长期接各种广告，欢迎联系ikdxhz@ikdxhz.top
                 </div>
                 <div class="announcement-footer">
@@ -831,6 +792,18 @@
                 <h2>多功能媒体工具</h2>
                 <p>支持录视频、录音、录屏并合并为一个视频，适合你</p>
                 <div class="tooltip">点击访问多功能媒体工具</div>
+            </a>
+            <a href="https://zj.ikdxhz.top" class="link-card" data-keywords="云服务器 免费 主机 建站 服务器 虚拟主机" target="_blank" rel="noopener noreferrer">
+                <div class="category-label">云服务</div>
+                <h2>久亦-免费云主机</h2>
+                <p>提供免费云主机，php，支持学习、测试和小型项目，助力新型站长快速建站</p>
+                <div class="tooltip">点击获取免费云服务器</div>
+            </a>
+            <a href="https://blog.ikdxhz.top" class="link-card" data-keywords="博客 文章 教程 技术 生活 分享" target="_blank" rel="noopener noreferrer">
+                <div class="category-label">博客</div>
+                <h2>ikdxhz的博客</h2>
+                <p>分享技术教程、生活经验和有趣的故事，在创意的天空中翱翔</p>
+                <div class="tooltip">点击访问博客</div>
             </a>
             <a href="https://gitme.ikdxhz.top/" class="link-card" data-keywords="GitHub 用户信息 查询 开发者 API 工具" target="_blank" rel="noopener noreferrer">
                 <div class="category-label">开发工具</div>
