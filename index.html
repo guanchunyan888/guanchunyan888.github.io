@@ -63,7 +63,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            transition: background 0.5s ease;
+            transition: background 0.3s ease;
             color: var(--text-color);
         }
 
@@ -74,7 +74,7 @@
             box-shadow: 0 10px 30px var(--shadow-color);
             width: 100%;
             max-width: 1200px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             overflow: hidden;
         }
 
@@ -93,7 +93,7 @@
             padding: 32px;
             border-radius: 24px 24px 0 0;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .header::after {
@@ -134,14 +134,13 @@
             cursor: pointer;
             padding: 12px;
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
 
         .theme-toggle:hover {
             background: rgba(255,255,255,0.25);
-            transform: rotate(180deg);
         }
 
         .search-container {
@@ -160,7 +159,7 @@
             border: 2px solid var(--border-color);
             border-radius: 16px;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             background: var(--card-bg);
             color: var(--text-color);
             box-shadow: 0 4px 6px var(--shadow-color);
@@ -180,11 +179,11 @@
             transform: translateY(-50%);
             color: var(--primary-color);
             font-size: 18px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .search-input:focus + .search-icon {
-            transform: translateY(-50%) scale(1.1);
+            transform: translateY(-50%);
         }
 
         .links {
@@ -223,7 +222,7 @@
             background: var(--card-bg);
             padding: 24px;
             border-radius: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             text-decoration: none;
             color: var(--text-color);
             display: block;
@@ -236,8 +235,8 @@
         }
 
         .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px var(--hover-shadow);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--hover-shadow);
             border-color: var(--primary-color);
         }
 
@@ -257,16 +256,16 @@
             display: flex;
             align-items: center;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .link-card:hover h2 {
-            transform: translateX(3px);
+            transform: translateX(2px);
             color: var(--primary-color);
         }
 
         .link-card:hover h2::before {
-            transform: scale(1.2);
+            transform: none;
         }
 
         .link-card p {
@@ -274,13 +273,13 @@
             font-size: 15px;
             margin: 0;
             line-height: 1.6;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             position: relative;
             z-index: 2;
         }
 
         .link-card:hover p {
-            transform: translateX(3px);
+            transform: translateX(2px);
         }
 
         .category-label {
@@ -295,14 +294,14 @@
             font-weight: 500;
             letter-spacing: 0.5px;
             box-shadow: 0 2px 5px var(--shadow-color);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             z-index: 5;
         }
 
         .link-card:hover .category-label {
             background: var(--primary-color);
             color: white;
-            transform: translateY(-2px);
+            transform: none;
         }
 
         .tooltip {
@@ -315,7 +314,7 @@
             box-shadow: 0 4px 12px var(--shadow-color);
             opacity: 0;
             transform: translateY(5px);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             pointer-events: none;
             z-index: 1000;
             bottom: 10px;
@@ -407,9 +406,6 @@
             font-size: 14px;
             padding-top: 20px;
             border-top: 1px solid var(--border-color);
-            animation: fadeIn 0.7s ease;
-            animation-delay: 0.6s;
-            animation-fill-mode: both;
             position: relative;
         }
 
@@ -424,7 +420,7 @@
         .footer a {
             color: var(--primary-color);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-weight: 500;
             position: relative;
             display: inline-flex;
@@ -468,7 +464,6 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s ease;
         }
         
         .announcement-content {
@@ -480,7 +475,6 @@
             border-radius: 16px;
             box-shadow: 0 10px 30px var(--shadow-color);
             position: relative;
-            animation: slideDown 0.4s ease-out;
             border-left: 5px solid var(--primary-color);
         }
         
@@ -542,14 +536,14 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             margin-left: auto;
         }
         
         #closeAnnouncementBtn:hover {
             background-color: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px var(--hover-shadow);
+            transform: none;
+            box-shadow: none;
         }
         
         .close-announcement {
@@ -560,25 +554,14 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         
         .close-announcement:hover {
             color: var(--primary-color);
-            transform: rotate(90deg);
+            transform: none;
         }
         
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
         /* 头部按钮组样式 */
         .header-buttons {
             display: flex;
@@ -594,24 +577,18 @@
             cursor: pointer;
             padding: 12px;
             border-radius: 50%;
-            transition: all 0.5s ease;
+            transition: all 0.2s ease;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
         }
         
         .announcement-button:hover {
             background: rgba(255,255,255,0.25);
-            transform: scale(1.1);
+            transform: none;
         }
         
         .announcement-button i {
-            animation: pulse-fade 2s infinite;
-        }
-        
-        @keyframes pulse-fade {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
+            animation: none;
         }
         
         /* 调整移动端样式 */
@@ -723,7 +700,7 @@
                 <div class="announcement-body">
 所有网站公告都在这里发布，请收藏本页面，及时查看最新公告。        
 【本页面】
-无公告
+减少了一些动画，现在更流畅了，欢迎体验
 
 【GitHub用户信息查询】
 无公告
@@ -743,9 +720,6 @@
 【多功能媒体工具】
 无公告
 
-【随机数生成器】
-无公告
-
 【AI井字棋对战】
 无公告
 
@@ -756,6 +730,9 @@
 无公告
 
 【表白墙】
+无公告
+
+【聊天交流】
 无公告
 
 长期接各种广告，欢迎联系ikdxhz@ikdxhz.top
@@ -807,12 +784,6 @@
                 <h2>GitHub用户查询</h2>
                 <p>快速查询GitHub用户信息，支持手动输入API数据绕过限制</p>
                 <div class="tooltip">点击访问GitHub用户信息查询中心</div>
-            </a>
-            <a href="https://wz.ikdxhz.top/sjs" class="link-card" data-keywords="随机数 生成器 工具 数字" target="_blank" rel="noopener noreferrer">
-                <div class="category-label">工具</div>
-                <h2>随机数生成器</h2>
-                <p>快速生成随机数字，支持自定义范围</p>
-                <div class="tooltip">点击生成随机数</div>
             </a>
             <a href="https://wz.ikdxhz.top/AI-Tic-Tac-Toe/" class="link-card" data-keywords="AI 井字棋 游戏 对战 人工智能" target="_blank" rel="noopener noreferrer">
                 <div class="category-label">游戏</div>
